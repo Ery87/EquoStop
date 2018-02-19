@@ -1,14 +1,52 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
+
 </ion-header>
 
+
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+  <ion-item>
+    <ion-input type="text" placeholder="LOGIN" [(ngModel)]="qrData">
+    </ion-input>
+  </ion-item>
+ 
+  <form id="login-form3" class="list">
+    <label class="item item-input" id="login-input1">
+        <ion-input type="text" placeholder="Inserire codice utente/Indirizzo e-mail"></ion-input>
+     
+    </label>
+<br>
+
+    <button ion-button full icon-left (click)="dashboard()">ENTRA</button>
+ 
+  </form>
+
+  <div id="login-markdown6" class="show-list-numbers-and-dots">
+    <p style="color:#000000;">--oppure--</p>
+  </div>
+  <button ion-button full icon-left (click)="scanCode()" color="secondary"><ion-icon name="qr-scanner"></ion-icon>Scan Code</button>
+ 
+  <ion-card *ngIf="createdCode">
+    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+    <ion-card-content>
+      <p>Value: {{ createdCode }}</p>
+    </ion-card-content>
+  </ion-card>
+ 
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content>
+      Result from Scan: {{ scannedCode }}
+    </ion-card-content>
+  </ion-card>
+
+
+
+    <div id="credits">
+      <p style="color:#000000;font-size:10px;">developed by I.S.I.S. Città di Luino - IT Department</p>
+    </div>
+
+
+  </ion-content>
