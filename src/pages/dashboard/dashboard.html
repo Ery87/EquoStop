@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-
+<!--
   <ion-header>
       
   
@@ -69,7 +69,7 @@
   
             
       
-    
+  <!--  
      <div id="bot-share">
      
       <button style="background-color: #3DD969;border-color:white;margin:0 auto;width:100%;" ion-button round outline>
@@ -80,4 +80,79 @@
 
     
  
+</ion-content>
+-->
+
+
+
+<ion-content padding class="transparent-header">
+  <ion-header>
+    <ion-navbar>
+    </ion-navbar>
+  </ion-header>
+  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}"></div>
+  <div id="content">
+    <div id="profile-info" padding>
+      <img id="profile-image" [src]="user.profileImage">
+      <h3 id="profile-name">{{user.name}}</h3>
+      <p>{{user.occupation}} &bull; {{user.location}}</p>
+      <p class="profile-description">{{user.description}}</p>
+        </div>
+    <hr/>
+    
+  <div id="posts">
+      <ion-row style="width:50%;">
+        
+        <ion-col >
+         
+      <ion-card  >
+          <ion-img  src="assets/imgs/avatar_condM.png" (click)="conducente()"></ion-img>
+          
+        </ion-card>
+
+      </ion-col>
+   
+      <ion-col >
+         
+          <ion-card >
+              <ion-img  src="assets/imgs/avatar_condF.png" (click)="passeggeroTappe()"></ion-img>
+              
+            </ion-card>
+         
+      </ion-col>
+       
+        
+        </ion-row>
+        <ion-row style="width:50%;">
+            <ion-col>
+         
+                <ion-card >
+                    <ion-img  src="assets/imgs/avatar_passM.png" (click)="passeggero()"></ion-img>
+                    
+                  </ion-card>
+               
+          </ion-col>
+          <ion-col>
+             
+              <ion-card >
+                  <ion-img  src="assets/imgs/avatar_passF.png" (click)="passeggero_f()"></ion-img>
+                  
+                </ion-card>
+               
+          </ion-col>
+           
+            
+            </ion-row>
+            <div id="button">
+            <button style="background-color: #3DD969;border-color:white;width:50%;" ion-button round outline>
+                PASSAGGI ISTANTANEI
+              </button>
+              </div>
+    </div>
+  </div>
+
+  
+     
+ 
+  
 </ion-content>

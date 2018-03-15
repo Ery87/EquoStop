@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -14,9 +14,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'conducente-data.html',
 })
 export class ConducenteDataPage {
+
   public from;
   public to;
 
+place={}
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.from=navParams.get('from');
     this.to= navParams.get('to');
@@ -26,5 +28,7 @@ export class ConducenteDataPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConducenteDataPage');
   }
-
+  conferma(){
+    console.log(this.place);
+  }
 }

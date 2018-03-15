@@ -31,7 +31,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     /* @name recordID * @type {String} * @public * @description Property to store the recordID for when an existing entry is being edited */ 
     public recordID : any = null; 
     /* @name baseURI * @type {String} * @public * @description Remote URI for retrieving data from and sending data to */ 
-    private baseURI : string = "http://www.YOUR-SERVER-ADDRESS.SUFFIX/"; 
+    private baseURI : string = "http://localhost/"; 
     // Initialise module classes 
     
     constructor(public navCtrl : NavController, public http : HttpClient, public NP : NavParams, public fb : FormBuilder, public toastCtrl : ToastController) { 
@@ -66,18 +66,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
       
       createEntry(name : string, description : string) : void { 
         let headers : any = new HttpHeaders({ 'Content-Type': 'application/json' }), 
-        options : any = { "key" : "create", "name" : name, "description" : description }, url : any = this.baseURI + "manage-data.php"; 
+        options : any = { "key" : "create", "name" : name, "description" : description }, url : any = this.baseURI + "connect_db.php"; 
         this.http.post(url, JSON.stringify(options), headers) .subscribe((data : any) => { 
           
           // If the request was successful notify the user 
           this.hideForm = true; this.sendNotification(`Congratulations the technology: ${name} was successfully added`); 
-        }, (error : any) => { this.sendNotification('Something went wrong!'); }); }
+        }, (error : any) => { this.sendNotification(error); }); }
         
         /** * Update an existing record that has been edited in the page's HTML form * Use angular's http post method to submit the record data * to our remote PHP script * *  {String} Name value from form field *  {String} Description value from form field **/ 
         
         updateEntry(name : string, description : string) : void { 
           let headers : any = new HttpHeaders({ 'Content-Type': 'application/json' }), 
-          options : any = { "key" : "update", "name" : name, "description" : description, "recordID" : this.recordID}, url : any = this.baseURI + "manage-data.php"; 
+          options : any = { "key" : "update", "name" : name, "description" : description, "recordID" : this.recordID}, url : any = this.baseURI + "connect_db.php"; 
           this.http .post(url, JSON.stringify(options), headers) .subscribe(data => { 
             
             // If the request was successful notify the user 
@@ -92,7 +92,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
           deleteEntry() : void { 
             let name : string = this.form.controls["name"].value, headers : any = new HttpHeaders({ 'Content-Type': 'application/json' }), 
             options : any = { "key" : "delete", "recordID" : this.recordID}, url : any = this.baseURI +
-             "manage-data.php"; this.http .post(url, JSON.stringify(options), headers) .subscribe(data => { this.hideForm = true; this.sendNotification(`Congratulations the technology: ${name} was successfully deleted`);
+             "connect_db.php"; this.http .post(url, JSON.stringify(options), headers) .subscribe(data => { this.hideForm = true; this.sendNotification(`Congratulations the technology: ${name} was successfully deleted`);
             }, (error : any) => { this.sendNotification('Something went wrong!'); }); 
           } 
           

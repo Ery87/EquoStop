@@ -6,37 +6,47 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>CONDUCENTE</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>RIEPILOGO PASSAGGIO</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+    <form (ngSubmit)="confermaForm()">
+
     <ion-item>
         <ion-label>Partenza</ion-label>
-        <ion-label>{{from.place}}</ion-label>
+        <ion-label [(ngModel)]="place.from" name="from" style="text-align:right;">{{from.place}}</ion-label>
     </ion-item>
 
     <ion-item>
         <ion-label>Arrivo</ion-label>
-        <ion-label>{{to.place}}</ion-label>
+        <ion-label [(ngModel)]="place.to" name="to" style="text-align:right;">{{to.place}}</ion-label>
     </ion-item>
+
+
 
     <ion-item>
       <ion-label>Orario di partenza</ion-label>
-     <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm "></ion-datetime>
+     <ion-datetime [(ngModel)]="place.ora" name="ora" displayFormat="HH:mm" pickerFormat="HH mm "></ion-datetime>
   </ion-item>
 
   <ion-item>
     <ion-label>Data di partenza</ion-label>
-   <ion-datetime displayFormat="DD MMM YYYY"></ion-datetime>
+   <ion-datetime [(ngModel)]="place.date" name="date" displayFormat="DD MMM YYYY"></ion-datetime>
 </ion-item>
 
+<ion-item>
+    <ion-label>Numero max di passeggeri</ion-label>
+    <ion-input  [(ngModel)]="place.posti" name="posti" text-right type="number" placeholder="Numero max di passeggeri"></ion-input>
+  </ion-item>
 
-
-
-
+  <button type="submit" style="background-color: #3DD969;border-color:white;width:50%;" ion-button round outline>
+      CONFERMA
+    </button>
+</form>
 </ion-content>
 

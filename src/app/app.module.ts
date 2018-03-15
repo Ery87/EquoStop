@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
@@ -19,6 +18,12 @@ import {ConducenteDataPage} from '../pages/conducente-data/conducente-data';
 import { PasseggeroTappePage } from '../pages/passeggero-tappe/passeggero-tappe';
 import {ListPage} from '../pages/list/list';
 import { HttpClientModule } from '@angular/common/http';
+import { AddTechnologyPage } from '../pages/add-technology/add-technology';
+import { Geolocation } from '@ionic-native/geolocation';
+import { IonicStorageModule } from '@ionic/storage';
+import { DashboardConducentePage } from '../pages/dashboard-conducente/dashboard-conducente';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,12 +36,15 @@ import { HttpClientModule } from '@angular/common/http';
     ConducenteToPage,
     ConducenteDataPage,
     PasseggeroTappePage,
-    ListPage
-  ],
+    ListPage,
+    AddTechnologyPage,
+    DashboardConducentePage
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
      NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
@@ -51,7 +59,9 @@ import { HttpClientModule } from '@angular/common/http';
     ConducenteToPage,
     ConducenteDataPage,
     PasseggeroTappePage,
-    ListPage
+    ListPage,
+    AddTechnologyPage,
+    DashboardConducentePage
   ],
   providers: [
     StatusBar,
